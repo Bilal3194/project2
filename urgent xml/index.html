@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="submit"] {
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 200px;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+hr {
+    border: 1px dotted #ccc;
+}
+
+    </style>
+</head>
+<body>
+    <form action="" id="accountform">
+        Account Name : <input type="text" id="customerName" placeholder="Account Name">
+        Account Balance : <input type="text" id="balance" placeholder="Balance">
+
+        <input type="submit" value="Submit">
+
+        <hr style="border:1px dotted #ccc">
+
+    </form>
+
+    <form action="" id="depositform">
+        Account Number : <input type="text" id="deposit" placeholder="Account Number">
+        Balance : <input type="text" id="amount" placeholder="Balance">
+
+        <input type="submit" value="Deposit">
+
+        <hr style="border:1px dotted #ccc">
+
+    </form>
+
+    
+    <form action="" id="withdrawform">
+        WithDraw Quantity : <input type="text" id="withdraw">
+        Cash : <input type="text" id="cash">
+
+        <input type="submit" value="Deposit">
+
+        <hr style="border:1px dotted #ccc">
+
+    </form>
+
+
+
+    <script>
+        // oop's
+        // Bank account
+        function bankAccount(cusname,balance = 0){
+            this.cusname = cusname;
+            this.AccountNumber = Date.now();
+            this.balance = balance;
+
+            this.deposit= function (amount){
+                this.balance += amount;
+            }
+
+            this.withdraw = function(amount){
+                this.balance -= amount;
+            }
+        }
+        let sk = new bankAccount("Shazaib Khan",90000);
+
+        let accountform = document.querySelector('#accountform');
+        let balance = document.querySelector('#balance');
+        let customerName = document.querySelector('#customerName');
+
+        let depositform = document.querySelector('#depositform');
+        let amount = document.querySelector('#amount');
+        let deposit = document.querySelector('#deposit');
+
+        let accounts = [];
+        accountform.addEventListener('submit',(e)=>{
+            e.preventDefault();
+
+         let sk = new bankAccount(customerName.value,balance.value);
+
+         accounts.push(sk);
+
+         console.log(accounts);
+
+        });
+        depositform.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            const account = accounts.find(
+                (account) => account.AccountNumber === +AccountNumber.value
+            );
+            account.deposit(+account.value);
+            console.log(accounts);
+        })
+      
+    </script>
+</body>
+</html>
